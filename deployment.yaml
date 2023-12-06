@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: creditscore-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: creditscore
+  template:
+    metadata:
+      labels:
+        app: creditscore
+    spec:
+      containers:
+      - name: creditscore-pod
+        image: zoomcamp-model:hw10
+        resources:
+          limits:
+            memory: "64Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 9696
